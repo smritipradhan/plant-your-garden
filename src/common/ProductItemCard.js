@@ -1,34 +1,49 @@
 import React from "react";
 import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 
 const ProductItemCard = ({ product, handleFavourite }) => {
+  const navigation = useNavigation();
   const { url, name, price, isFavourite, id } = product;
 
   const containerDynamicStyle = {
     backgroundColor: isFavourite ? "#B5C9AD" : "#879781",
   };
 
+  const handleProductDetailsNavigation = () => {
+    navigation.navigate("ProductDetails");
+  };
+
   return (
-    <View style={[styles.container]}>
-      <TouchableOpacity onPress={(e) => handleFavourite(e, product)}>
-        <View style={[styles.heartIconContainer, containerDynamicStyle]}>
-          <Icon name="heart" size={15} color={isFavourite ? "red" : "white"} />
-        </View>
-      </TouchableOpacity>
-      <Image style={styles.tinyLogo} source={url} />
-      <View style={styles.itemDetails}>
-        <View>
-          <Text style={styles.plantName}>{name}</Text>
-          <View style={styles.plantPrice}>
-            <Text>${price}</Text>
+    <TouchableOpacity
+      onPress={handleProductDetailsNavigation}
+      style={styles.container}
+    >
+      <View>
+        <TouchableOpacity onPress={(e) => handleFavourite(e, product)}>
+          <View style={[styles.heartIconContainer, containerDynamicStyle]}>
+            <Icon
+              name="heart"
+              size={15}
+              color={isFavourite ? "red" : "white"}
+            />
+          </View>
+        </TouchableOpacity>
+        <Image style={styles.tinyLogo} source={url} />
+        <View style={styles.itemDetails}>
+          <View>
+            <Text style={styles.plantName}>{name}</Text>
+            <View style={styles.plantPrice}>
+              <Text>${price}</Text>
+            </View>
+          </View>
+          <View style={styles.plusIcon}>
+            <Icon name="plus" size={18} color="white" />
           </View>
         </View>
-        <View style={styles.plusIcon}>
-          <Icon name="plus" size={18} color="white" />
-        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

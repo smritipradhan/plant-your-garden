@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -7,92 +7,26 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useDispatch, useSelector } from "react-redux";
 import FilterChip from "../../common/FilterChip";
 import ProductItemCard from "../../common/ProductItemCard";
+import { setOriginalProductData } from "../../store/productSlice";
+import useFavouriteHandler from "../hooks/useFavouriteHandler";
 import { filterConfig } from "../hooks/useProductFilter";
-import uuid from "react-native-uuid";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { handleFavourite } = useFavouriteHandler();
   const [filterConfiguration, setFilterConfiguration] = useState(filterConfig);
   const [itemSearchInput, setItemSearchInput] = useState("");
 
-  const [productData, setProductData] = useState([
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantOne.png`),
-      name: "Jade Plant",
-      price: "40.00",
-      isFavourite: true,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/cactus.png`),
-      name: "Cactus",
-      price: "80.00",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantThree.png`),
-      name: "Swiss cheese plant",
-      price: "29.99",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantFour.png`),
-      name: "Hanging Jade",
-      price: "20.00",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantFive.png`),
-      name: "Jade Plant",
-      price: "39.99",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantSix.png`),
-      name: "Jade Plant",
-      price: "89.99",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantOne.png`),
-      name: "Jade Plant",
-      price: "99.99",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantTwo.png`),
-      name: "Jade Plant",
-      price: "40.00",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantThree.png`),
-      name: "Jade Plant",
-      price: "89.99",
-      isFavourite: false,
-    },
-    {
-      id: uuid.v4(),
-      url: require(`./../../../assets/plants/plantFour.png`),
-      name: "Jade Plant",
-      price: "40.00",
-      isFavourite: false,
-    },
-  ]);
+  const { originalProductData } = useSelector((state) => state.product);
+
   const handleSearchInput = (text) => {
     setItemSearchInput(text);
   };
+
   const handleFilterSelection = (_e, title) => {
     let updatedFilterConfig = [...filterConfiguration];
     updatedFilterConfig = updatedFilterConfig.map((filterElement) => {
@@ -101,20 +35,7 @@ const Home = () => {
       } else return { ...filterElement, isActive: false };
     });
 
-    setFilterConfiguration(updatedFilterConfig);
-  };
-
-  const handleFavourite = (e, favouriteProduct) => {
-    let updatedProduct = [...productData];
-    updatedProduct = updatedProduct.map((product) => {
-      if (product.id === favouriteProduct.id) {
-        return { ...product, isFavourite: !product.isFavourite };
-      } else {
-        return { ...product };
-      }
-    });
-
-    setProductData(updatedProduct);
+    dispatch(setOriginalProductData(updatedFilterConfig));
   };
 
   return (
@@ -137,6 +58,7 @@ const Home = () => {
                   filterItem={filterItem}
                   index={index}
                   handleFilterSelection={handleFilterSelection}
+                  key={index}
                 />
               );
             })}
@@ -144,13 +66,14 @@ const Home = () => {
       </View>
       {/* Product List */}
       <ScrollView contentContainerStyle={styles.body}>
-        {Array.isArray(productData) &&
-          productData.length &&
-          productData.map((product) => {
+        {Array.isArray(originalProductData) &&
+          originalProductData.length &&
+          originalProductData.map((product, index) => {
             return (
               <ProductItemCard
                 product={product}
                 handleFavourite={handleFavourite}
+                key={index}
               />
             );
           })}
@@ -211,4 +134,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
+
 export default Home;

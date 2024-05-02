@@ -11,7 +11,7 @@ const LetsStart = ({ navigation }) => {
       <View style={styles.imageContainer}>
         <Image
           style={styles.tinyLogo}
-          source={require(`./../../assets/plants/plantTwo.png`)}
+          source={require(`./../../assets/plants/plantThree.png`)}
         />
       </View>
       <View style={styles.createYourGardenText}>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   letsStartButton: {
     color: "white",
-    fontSize: "20",
+    fontSize: 20,
     fontWeight: "400",
   },
   chevronRightIcon: {
