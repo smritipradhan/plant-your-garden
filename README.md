@@ -19,7 +19,7 @@ React Native Application
 
 ### Visuals
 
-<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/af897804-5c14-4616-83a8-c56095f424e2" width="300" height="600">
-<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/95618fad-cc0f-4b64-acf1-a20ba7ee092b)" width="300" height="600">
-<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/bbe21f89-cde2-40c8-98e5-e68627ba86aa)" width="300" height="600">
+<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/af897804-5c14-4616-83a8-c56095f424e2" width="250" height="500">
+<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/95618fad-cc0f-4b64-acf1-a20ba7ee092b)" width="250" height="500">
+<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/bbe21f89-cde2-40c8-98e5-e68627ba86aa)" width="250" height="500">
 
