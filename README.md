@@ -12,5 +12,14 @@ Plant Your Garden is owned and operated by passionate plant owners who are dedic
 Note: Plant Your Garden is a static website crafted with meticulous attention to detail and presented in clear, concise English. Explore our collection, discover new favorites, and let Plant Your Garden help you cultivate your green oasis today!
 
 Status : In Progress
+
 Owner : Smriti Pradhan
+
 React Native Application
+
+### Visuals
+
+<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/af897804-5c14-4616-83a8-c56095f424e2" width="300" height="600">
+<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/95618fad-cc0f-4b64-acf1-a20ba7ee092b)" width="300" height="600">
+<img src="https://github.com/smritipradhan/plant-your-garden/assets/47382260/bbe21f89-cde2-40c8-98e5-e68627ba86aa)" width="300" height="600">
+
