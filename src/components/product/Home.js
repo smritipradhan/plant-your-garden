@@ -6,6 +6,8 @@ import {
   Text,
   TextInput,
   View,
+  Image,
+  TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +16,7 @@ import ProductItemCard from "../../common/ProductItemCard";
 import { setOriginalProductData } from "../../store/productSlice";
 import useFavouriteHandler from "../hooks/useFavouriteHandler";
 import { filterConfig } from "../hooks/useProductFilter";
+import { setSelectedActivePage } from "../../store/productSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -38,8 +41,40 @@ const Home = () => {
     dispatch(setOriginalProductData(updatedFilterConfig));
   };
 
+  const handleProfileClickNavigation = () => {
+    dispatch(setSelectedActivePage("profile"));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
+      {/* User Details */}
+      <View>
+        <View style={styles.useDetailsContainer}>
+          <TouchableOpacity onPress={handleProfileClickNavigation}>
+            <Image
+              source={require("./../../../assets/profile.jpeg")}
+              style={styles.profile}
+            />
+          </TouchableOpacity>
+
+          <View style={styles.profileNotification}>
+            <View>
+              <Text style={styles.welcome}>Welcome </Text>
+              <Text style={styles.nameOfUser}>Smriti !</Text>
+            </View>
+            <View style={styles.bellIconContainer}>
+              <Icon
+                name="bell-o"
+                size={20}
+                color="black"
+                style={styles.bellIcon}
+              />
+              <View style={styles.noticationIcon}></View>
+            </View>
+          </View>
+        </View>
+      </View>
+
       {/* Search Bar */}
       <View style={styles.searchbar}>
         <Icon name="search" size={20} color="#475E3E" />
@@ -105,6 +140,53 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingBottom: 60,
+  },
+
+  // User Details
+
+  useDetailsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  profileNotification: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%",
+    alignItems: "center",
+  },
+
+  profile: {
+    marginVertical: 10,
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+  },
+  bellIconContainer: {
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    height: 50,
+    width: 50,
+    backgroundColor: "#DEE8DC",
+    padding: 10,
+  },
+
+  noticationIcon: {
+    height: 10,
+    width: 10,
+    backgroundColor: "red",
+    position: "absolute",
+    right: 10,
+    top: 10,
+    borderRadius: 50,
+  },
+  welcome: {
+    color: "#677080",
+  },
+  nameOfUser: {
+    fontSize: 20,
+    letterSpacing: 1,
   },
 
   // Search Bar Styles

@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedActivePage } from "../store/productSlice";
 import useBottomNavigationConfig from "./hooks/useBottomNavigationConfig";
 
 const ProductList = () => {
+  const dispatch = useDispatch();
   const { bottomNavigationConfig } = useBottomNavigationConfig();
-  const [selectedActivePage, setSelectedActivePage] = useState("home");
+  const { selectedActivePage } = useSelector((state) => state.product);
 
   const handleActiveNavigation = (_event, navigationItem) => {
-    setSelectedActivePage(navigationItem.name);
+    dispatch(setSelectedActivePage(navigationItem?.name));
   };
 
   const activeComponent = bottomNavigationConfig.filter((navigationItem) => {
@@ -22,10 +25,11 @@ const ProductList = () => {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNavigation}>
-        {bottomNavigationConfig.map((navigationItem) => {
+        {bottomNavigationConfig.map((navigationItem, index) => {
           return (
             <TouchableOpacity
               onPress={(e) => handleActiveNavigation(e, navigationItem)}
+              key={index}
             >
               <View
                 style={styles.navigationButton}

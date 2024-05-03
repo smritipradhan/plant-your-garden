@@ -42,7 +42,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantFive.png`),
-      name: "Jade Plant",
+      name: "Philodendron",
       price: "39.99",
       isFavourite: false,
       description:
@@ -51,7 +51,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantSix.png`),
-      name: "Jade Plant",
+      name: "Monstera",
       price: "89.99",
       isFavourite: false,
       description:
@@ -69,7 +69,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantThree.png`),
-      name: "Jade Plant",
+      name: "Swiss cheese plant",
       price: "89.99",
       isFavourite: false,
       description:
@@ -78,7 +78,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantFour.png`),
-      name: "Jade Plant",
+      name: "String of Pearls",
       price: "40.00",
       isFavourite: false,
       description:
@@ -125,7 +125,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantFive.png`),
-      name: "Jade Plant",
+      name: "Philodendron",
       price: "39.99",
       isFavourite: false,
       description:
@@ -134,7 +134,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantSix.png`),
-      name: "Jade Plant",
+      name: "Monstera",
       price: "89.99",
       isFavourite: false,
       description:
@@ -152,7 +152,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantThree.png`),
-      name: "Jade Plant",
+      name: "Swiss cheese plant",
       price: "89.99",
       isFavourite: false,
       description:
@@ -161,7 +161,7 @@ const initialState = {
     {
       id: uuid.v4(),
       url: require(`./../../assets/plants/plantFour.png`),
-      name: "Jade Plant",
+      name: "String of Pearls",
       price: "40.00",
       isFavourite: false,
       description:
@@ -171,6 +171,7 @@ const initialState = {
   cart: [],
   selectedPlantId: "",
   selectedPlantData: {},
+  selectedActivePage: "home",
 };
 
 const productSlice = createSlice({
@@ -190,6 +191,9 @@ const productSlice = createSlice({
     setSelectedPlantData(state, action) {
       state.selectedPlantData = action?.payload;
     },
+    setSelectedActivePage(state, action) {
+      state.selectedActivePage = action?.payload;
+    },
   },
 });
 
@@ -199,4 +203,5 @@ export const {
   setCart,
   setSelectedPlant,
   setSelectedPlantData,
+  setSelectedActivePage,
 } = productSlice.actions;
