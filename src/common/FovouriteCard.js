@@ -1,19 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { StyleSheet, TouchableOpacity, View, Image, Text } from "react-native";
+import useProductNavigation from "../components/hooks/useProductNavigation";
 
 const FovouriteCard = ({ product, handleFavourite }) => {
   const navigation = useNavigation();
-  const { url, name, price, isFavourite, id } = product;
-
-  const handleProductDetailsNavigation = () => {
-    navigation.navigate("ProductDetails");
-  };
+  const { handleProductDetailsNavigation } = useProductNavigation(navigation);
+  const { url, name, price, id } = product;
 
   return (
     <TouchableOpacity
-      onPress={handleProductDetailsNavigation}
+      onPress={(e) => handleProductDetailsNavigation(e, id)}
       style={styles.container}
     >
       <View style={styles.favouriteCardContainer}>
@@ -23,7 +21,7 @@ const FovouriteCard = ({ product, handleFavourite }) => {
         <View>
           <View style={styles.nameDelete}>
             <Text style={styles.plantName}>{name}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={(e) => handleFavourite(e, product)}>
               <Icon name="trash" size={20} color="black" />
             </TouchableOpacity>
           </View>

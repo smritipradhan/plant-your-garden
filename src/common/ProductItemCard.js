@@ -1,23 +1,22 @@
-import React from "react";
-import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import useProductNavigation from "../components/hooks/useProductNavigation";
 
 const ProductItemCard = ({ product, handleFavourite }) => {
-  const navigation = useNavigation();
   const { url, name, price, isFavourite, id } = product;
+
+  const navigation = useNavigation();
+  const { handleProductDetailsNavigation } = useProductNavigation(navigation);
 
   const containerDynamicStyle = {
     backgroundColor: isFavourite ? "#B5C9AD" : "#879781",
   };
 
-  const handleProductDetailsNavigation = () => {
-    navigation.navigate("ProductDetails");
-  };
-
   return (
     <TouchableOpacity
-      onPress={handleProductDetailsNavigation}
+      onPress={(e) => handleProductDetailsNavigation(e, id)}
       style={styles.container}
     >
       <View>

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Text,
-  SafeAreaView,
-} from "react-native";
+import { SafeAreaView, Text } from "react-native";
 const Profile = () => {
   return (
     <SafeAreaView>
