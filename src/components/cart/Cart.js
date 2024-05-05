@@ -10,10 +10,12 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 import CartCard from "./CartCard";
 import { useSelector } from "react-redux";
+import NoDataScreen from "../../common/NoData";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state.product);
   const [totalAmount, setTotalAmount] = useState(0);
+  const discountAmount = 20;
 
   const calculatTotalAmount = () => {
     let total = cart.reduce(
@@ -37,9 +39,7 @@ const Cart = () => {
             return <CartCard cartItem={cartItem} key={index} />;
           })
         ) : (
-          <>
-            <Text>No Data</Text>
-          </>
+          <></>
         )}
       </ScrollView>
       {cart.length !== 0 ? (
@@ -50,11 +50,11 @@ const Cart = () => {
           </View>
           <View style={styles.itemTotal}>
             <Text>Discount</Text>
-            <Text>-$10</Text>
+            <Text>-${discountAmount}</Text>
           </View>
           <View style={styles.itemTotal}>
             <Text>Subtotal</Text>
-            <Text>$70</Text>
+            <Text>${totalAmount - discountAmount}</Text>
           </View>
           <TouchableOpacity>
             <View style={styles.letGetStarted}>
@@ -90,20 +90,16 @@ const styles = StyleSheet.create({
     marginTop: 16,
     flexDirection: "column",
     gap: 10,
-    paddingBottom: 100,
-    overflowY: "scroll",
-    maxHeight: 500,
+    maxHeight: 550,
   },
 
   // Item Total
-
   itemCheckoutPrice: {
-    borderTopColor: "grey",
-    borderTopWidth: 0.5,
+    paddingHorizontal: 10,
   },
 
   itemTotal: {
-    marginTop: 10,
+    marginTop: 4,
     flexDirection: "row",
     justifyContent: "space-between",
   },

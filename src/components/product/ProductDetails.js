@@ -46,7 +46,7 @@ const ProductDetails = () => {
           <Text style={styles.aboutPlantHeader}>About Plant</Text>
           <Text style={styles.description}>{description}</Text>
         </View>
-        <TouchableOpacity onPress={(e) => addToCart(e, selectedPlantData)}>
+        <TouchableOpacity onPress={addToCart}>
           <View style={styles.addToCartContainer}>
             <Text style={styles.addToCartText}>Add to Cart</Text>
             <Icon
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   plantImageContainer: {
-    backgroundColor: "#B5C9AD",
+    backgroundColor: "#CEE0CA",
     height: 900,
     width: "100%",
   },
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   icon: {
-    backgroundColor: "#B5C9AD",
+    backgroundColor: "#CEE0CA",
     padding: 10,
     height: 40,
     width: 40,

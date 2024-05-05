@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     width: 90,
   },
   icon: {
-    backgroundColor: "#B5C9AD",
+    backgroundColor: "#CEE0CA",
     height: 25,
     width: 25,
     borderRadius: 40,

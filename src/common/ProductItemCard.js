@@ -11,7 +11,7 @@ const ProductItemCard = ({ product, handleFavourite }) => {
   const { handleProductDetailsNavigation } = useProductNavigation(navigation);
 
   const containerDynamicStyle = {
-    backgroundColor: isFavourite ? "#B5C9AD" : "#879781",
+    backgroundColor: isFavourite ? "#CEE0CA" : "#879781",
   };
 
   return (
@@ -48,16 +48,17 @@ const ProductItemCard = ({ product, handleFavourite }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    borderRadius: 20,
+    padding: 8,
+    borderRadius: 10,
     flex: 1,
     minWidth: 150,
+    maxWidth: 170,
     justifyContent: "center",
-    backgroundColor: "#B5C9AD",
+    backgroundColor: "#CEE0CA",
   },
   tinyLogo: {
     width: null,
-    height: 150,
+    height: 110,
     resizeMode: "contain",
   },
   itemDetails: {
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     width: 80,
   },
   plusIcon: {
-    backgroundColor: "#B5C9AD",
+    backgroundColor: "#CEE0CA",
     padding: 5,
     borderRadius: 25,
   },

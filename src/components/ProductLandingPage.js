@@ -35,7 +35,7 @@ const ProductList = () => {
                 style={styles.navigationButton}
                 backgroundColor={
                   navigationItem.name === selectedActivePage
-                    ? "#B5C9AD"
+                    ? "#CEE0CA"
                     : "white"
                 }
               >
@@ -52,7 +52,7 @@ const ProductList = () => {
 const styles = StyleSheet.create({
   // Bottom Navigation
   navigationButton: {
-    backgroundColor: "#B5C9AD",
+    backgroundColor: "#CEE0CA",
     padding: 5,
     borderRadius: 20,
     width: 40,

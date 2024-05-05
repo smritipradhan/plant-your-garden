@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
 import { useSelector } from "react-redux";
 import FovouriteCard from "../../common/FovouriteCard";
 import useFavouriteHandler from "../hooks/useFavouriteHandler";
+import NoDataScreen from "../../common/NoData";
 
 const Favourite = () => {
   const { originalProductData } = useSelector((state) => state.product);
@@ -15,9 +16,10 @@ const Favourite = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.category}>Favourites</Text>
-      <ScrollView contentContainerStyle={styles.body}>
-        {Array?.isArray(favouriteProducts) && favouriteProducts?.length ? (
-          favouriteProducts?.map((product, index) => {
+
+      {Array?.isArray(favouriteProducts) && favouriteProducts?.length ? (
+        <ScrollView contentContainerStyle={styles.body}>
+          {favouriteProducts?.map((product, index) => {
             return (
               <FovouriteCard
                 product={product}
@@ -25,11 +27,11 @@ const Favourite = () => {
                 key={index}
               />
             );
-          })
-        ) : (
-          <Text>No Data</Text>
-        )}
-      </ScrollView>
+          })}
+        </ScrollView>
+      ) : (
+        <NoDataScreen iconName="heart" message="No Favourites" />
+      )}
     </SafeAreaView>
   );
 };
