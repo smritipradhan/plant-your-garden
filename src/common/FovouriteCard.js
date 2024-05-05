@@ -3,10 +3,12 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import useProductNavigation from "../components/hooks/useProductNavigation";
+import useCartHandler from "../components/hooks/useCartHandler";
 
 const FovouriteCard = ({ product, handleFavourite }) => {
   const navigation = useNavigation();
   const { handleProductDetailsNavigation } = useProductNavigation(navigation);
+  const { addToCart } = useCartHandler();
   const { url, name, price, id } = product;
 
   return (
@@ -28,7 +30,10 @@ const FovouriteCard = ({ product, handleFavourite }) => {
           <View>
             <Text style={styles.price}>${price}</Text>
           </View>
-          <TouchableOpacity style={styles.addToCartContainer}>
+          <TouchableOpacity
+            style={styles.addToCartContainer}
+            onPress={(e) => addToCart(e, product)}
+          >
             <Icon name="shopping-cart" size={20} color="black" />
             <Text style={styles.addToCart}>Add to Cart</Text>
           </TouchableOpacity>

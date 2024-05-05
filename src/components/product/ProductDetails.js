@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../store/productSlice";
+import useCartHandler from "../hooks/useCartHandler";
 
 const ProductDetails = () => {
-  const dispatch = useDispatch();
+  const { addToCart, removeFromCart } = useCartHandler();
   const { cart, selectedPlantData } = useSelector((state) => state.product);
   const { name, description, price, url } = selectedPlantData;
-  const [count, setCount] = useState(0);
-
-  const addToCart = () => {
-    let updatedCart = [...cart];
-    updatedCart.push(selectedPlantData);
-    dispatch(setCart(updatedCart));
-  };
+  const count =
+    cart.find((item) => selectedPlantData.id === item.id)?.count || 0;
 
   return (
     <View style={styles.container}>
@@ -31,11 +27,17 @@ const ProductDetails = () => {
           </View>
 
           <View style={styles.addToCart}>
-            <TouchableOpacity style={styles.icon}>
+            <TouchableOpacity
+              style={styles.icon}
+              onPress={(e) => removeFromCart(e, selectedPlantData)}
+            >
               <Icon name="minus" size={16} color="#475E3E" />
             </TouchableOpacity>
             <Text style={styles.count}>{count}</Text>
-            <TouchableOpacity style={styles.icon}>
+            <TouchableOpacity
+              style={styles.icon}
+              onPress={(e) => addToCart(e, selectedPlantData)}
+            >
               <Icon name="plus" size={16} color="#475E3E" />
             </TouchableOpacity>
           </View>
@@ -44,7 +46,7 @@ const ProductDetails = () => {
           <Text style={styles.aboutPlantHeader}>About Plant</Text>
           <Text style={styles.description}>{description}</Text>
         </View>
-        <TouchableOpacity onPress={addToCart}>
+        <TouchableOpacity onPress={(e) => addToCart(e, selectedPlantData)}>
           <View style={styles.addToCartContainer}>
             <Text style={styles.addToCartText}>Add to Cart</Text>
             <Icon

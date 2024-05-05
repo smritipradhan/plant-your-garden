@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state.product);
-  console.log({ cart });
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.category}>Cart</Text>
