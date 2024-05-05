@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="LetsStart"
-            component={ProductList}
+            component={LetsStart}
             options={{ headerShown: false }}
           />
           <Stack.Screen

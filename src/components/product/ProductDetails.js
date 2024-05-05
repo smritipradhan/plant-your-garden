@@ -9,7 +9,7 @@ const ProductDetails = () => {
   const { addToCart, removeFromCart } = useCartHandler();
   const { cart, selectedPlantData } = useSelector((state) => state.product);
   const { name, description, price, url } = selectedPlantData;
-  const count =
+  const selectedPlantcount =
     cart.find((item) => selectedPlantData.id === item.id)?.count || 0;
 
   return (
@@ -33,7 +33,7 @@ const ProductDetails = () => {
             >
               <Icon name="minus" size={16} color="#475E3E" />
             </TouchableOpacity>
-            <Text style={styles.count}>{count}</Text>
+            <Text style={styles.count}>{selectedPlantcount}</Text>
             <TouchableOpacity
               style={styles.icon}
               onPress={(e) => addToCart(e, selectedPlantData)}
@@ -46,7 +46,7 @@ const ProductDetails = () => {
           <Text style={styles.aboutPlantHeader}>About Plant</Text>
           <Text style={styles.description}>{description}</Text>
         </View>
-        <TouchableOpacity onPress={addToCart}>
+        <TouchableOpacity onPress={(e) => addToCart(e, selectedPlantData)}>
           <View style={styles.addToCartContainer}>
             <Text style={styles.addToCartText}>Add to Cart</Text>
             <Icon

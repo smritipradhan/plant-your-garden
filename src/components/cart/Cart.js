@@ -39,7 +39,7 @@ const Cart = () => {
             return <CartCard cartItem={cartItem} key={index} />;
           })
         ) : (
-          <></>
+          <NoDataScreen iconName="shopping-cart" message="No Cart Items" />
         )}
       </ScrollView>
       {cart.length !== 0 ? (

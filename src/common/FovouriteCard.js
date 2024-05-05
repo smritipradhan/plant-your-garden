@@ -38,7 +38,7 @@ const FovouriteCard = ({ product, handleFavourite }) => {
             }}
           >
             <Icon name="shopping-cart" size={20} color="black" />
-            <Text style={styles.addToCart}>Move to Cart</Text>
+            <Text style={styles.addToCart}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
       </View>

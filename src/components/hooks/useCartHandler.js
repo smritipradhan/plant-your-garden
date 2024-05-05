@@ -35,7 +35,7 @@ const useCartHandler = () => {
   const removeFromCart = (_event, selectedPlantData, type = "decreament") => {
     let updatedCart = [...cart];
 
-    if (selectedPlantData?.count === 1 || type === "delete") {
+    if (type === "delete") {
       updatedCart = updatedCart?.filter(
         (item) => item.id !== selectedPlantData.id
       );
@@ -48,6 +48,9 @@ const useCartHandler = () => {
         }
       });
     }
+
+    // Remove Item with count - 0
+    updatedCart = updatedCart.filter((cartItem) => cartItem.count);
 
     dispatch(setCart(updatedCart));
   };
