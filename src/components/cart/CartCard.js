@@ -51,16 +51,16 @@ const CartCard = ({ cartItem }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 100,
-    width: "100%",
-    padding: 10,
-    backgroundColor: "#C9D9CD",
+    padding: 4,
+    // backgroundColor: "#C9D9CD",
     flexDirection: "row",
     borderRadius: 10,
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
   },
   tinyLogo: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     resizeMode: "contain",
   },
 

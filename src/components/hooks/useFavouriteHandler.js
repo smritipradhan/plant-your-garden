@@ -5,7 +5,7 @@ const useFavouriteHandler = () => {
   const dispatch = useDispatch();
   const { originalProductData } = useSelector((state) => state.product);
 
-  const handleFavourite = (_event, favouriteProduct, type) => {
+  const handleFavourite = (_event, favouriteProduct) => {
     let updatedProduct = [...originalProductData];
     updatedProduct = updatedProduct.map((product) => {
       if (product.id === favouriteProduct.id) {

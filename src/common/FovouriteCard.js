@@ -32,10 +32,13 @@ const FovouriteCard = ({ product, handleFavourite }) => {
           </View>
           <TouchableOpacity
             style={styles.addToCartContainer}
-            onPress={(e) => addToCart(e, product)}
+            onPress={(e) => {
+              addToCart(e, product);
+              handleFavourite(e, product);
+            }}
           >
             <Icon name="shopping-cart" size={20} color="black" />
-            <Text style={styles.addToCart}>Add to Cart</Text>
+            <Text style={styles.addToCart}>Move to Cart</Text>
           </TouchableOpacity>
         </View>
       </View>
